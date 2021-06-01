@@ -1,0 +1,132 @@
+.sidebar {
+  position: sticky;
+  top: 82px;
+  flex: 0.2;
+  border-radius: 10px;
+  text-align: center;
+  height: fit-content;
+  margin-top: 0.5em;
+  background: #fff;
+  min-width: 200px;
+}
+
+.sidebar__pfp {
+  margin-bottom: 10px;
+}
+
+.sidebar__top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 10px 10px 0px 0px;
+  padding-bottom: 1em;
+}
+
+.sidebar__top > img {
+  object-fit: cover;
+  margin-bottom: -35px;
+  width: 100%;
+  height: 60px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.sidebar__pfp {
+  width: 70px !important;
+  height: 70px !important;
+  box-shadow: 0 0 0 2px white;
+}
+
+.sidebar__aboutme {
+  font-size: 0.8rem;
+  color: #666666;
+  padding: 0em 1em;
+}
+
+.sidebar__stats {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 0em;
+  border: 1px solid lightgray;
+  border-top: 0;
+}
+
+.sidebar__stat {
+  padding: 0.2em 0.8em;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar__stat:hover {
+  cursor: pointer;
+  background: #e4e4e3;
+}
+
+.sidebar__stat p:nth-child(1) {
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #666666;
+}
+
+.sidebar__statNumber {
+  color: #0a66c2;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.sidebar__premium {
+  border: 1px solid lightgray;
+  border-top: 0;
+  font-size: 0.8rem;
+  padding: 1em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* justify-content: center; */
+}
+
+.sidebar__premium > p > img {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+
+.sidebar__premium > p:nth-child(1) {
+  color: #666666;
+}
+
+.sidebar__premium > p:nth-child(2) {
+  margin: 0.2em 0;
+  font-weight: 600;
+  color: #303030;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__premium:hover {
+  cursor: pointer;
+  background: #e4e4e3;
+}
+
+.sidebar__itemsbutton {
+  border: 1px solid lightgray;
+  border-top: 0;
+  display: flex;
+  padding: 1em 1em;
+  font-size: 0.8rem;
+  color: #5e5e5e;
+  font-weight: 600;
+  align-items: flex-start;
+}
+
+.sidebar__itemsbutton > p {
+  color: #303030;
+}
+
+.sidebar__itemsbutton:hover {
+  cursor: pointer;
+  background: #e4e4e3;
+}
