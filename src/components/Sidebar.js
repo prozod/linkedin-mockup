@@ -1,9 +1,20 @@
-import React from "react";
 import "./Sidebar.css";
 import { Avatar } from "@material-ui/core";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
+import SidebarAccordion from "./SidebarAccordion";
+import AccordionItems from "./AccordionItems";
+import AddIcon from "@material-ui/icons/Add";
 
-function Sidebar(props) {
+function Sidebar() {
+  const recentItem = (topic) => {
+    return (
+      <div className="sidebar__recentItem">
+        <span className="sidebar__hash">#</span>
+        <p>{topic}</p>
+      </div>
+    );
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -41,8 +52,45 @@ function Sidebar(props) {
       </div>
 
       <div className="sidebar__itemsbutton">
-        <BookmarkIcon />
+        <BookmarkIcon className="sidebar__itemsIcon" />
         <p>My items</p>
+      </div>
+
+      <div className="sidebar__bottom">
+        <SidebarAccordion class={"sidebar__recent"} title={"Recent"}>
+          {recentItem("JavaScript")}
+          {recentItem("softwareengineer")}
+          {recentItem("softwaredevelopment")}
+          {recentItem("sveltejs")}
+          {recentItem("react&redux")}
+          {recentItem("design")}
+        </SidebarAccordion>
+
+        <SidebarAccordion class={"sidebar__groups"} title={"Groups"}>
+          <AccordionItems children={"Javascript"} />
+          <AccordionItems children={"Ruby on Rails"} />
+          <AccordionItems children={"Stackoverflow Xtremists"} />
+        </SidebarAccordion>
+
+        <div className="sidebar__groups">
+          <p>
+            Events
+            <span>
+              <AddIcon />
+            </span>
+          </p>
+        </div>
+
+        <SidebarAccordion class={"sidebar__groups"} title={"Followed Hashtags"}>
+          {recentItem("softwareengineering")}
+          {recentItem("softwaredevelopment")}
+          {recentItem("reactjs")}
+          {recentItem("frontendjobs")}
+          {recentItem("angular")}
+        </SidebarAccordion>
+        <div className="sidebar__discover">
+          <p>Discover more</p>
+        </div>
       </div>
     </div>
   );

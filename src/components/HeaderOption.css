@@ -4,22 +4,33 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0em 0.7em;
+  /* margin: 0em 0.7em; */
   cursor: pointer;
   position: relative;
+  width: 80px;
+  transition: color 0.2s;
 }
 
 .headerOption:hover {
   color: #191919;
 }
 
-.headerOption:hover::before {
+.headerOption:before,
+.headerOption:after {
+  transition: all 0.2s;
+}
+
+.headerOption::before {
   position: absolute;
   content: "";
   background-color: #191919;
-  width: 100%;
+  width: 0%;
   height: 2px;
-  top: 50px;
+  top: 45px;
+}
+
+.headerOption:hover::before {
+  width: 100%;
 }
 
 .headerOption__icon {
