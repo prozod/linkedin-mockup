@@ -7,8 +7,17 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import TextsmsIcon from "@material-ui/icons/Textsms";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import { useDispatch } from "react-redux";
+import { auth } from "../components/Firebase";
+import { logout } from "../features/userSlice";
 
 function Header() {
+  const dispatch = useDispatch();
+  const logoutUser = () => {
+    dispatch(logout());
+    auth.signOut();
+  };
+
   return (
     <div className="header__container">
       <div className="header">
@@ -33,6 +42,7 @@ function Header() {
           <HeaderOption
             profilepicture="https://randomuser.me/api/portraits/men/47.jpg"
             title="Me"
+            onClick={logoutUser}
           />
         </div>
       </div>

@@ -1,12 +1,13 @@
 .sidebar {
-  position: sticky;
-  top: 82px;
   flex: 0.2;
+  position: sticky;
+  top: 60px;
   border-radius: 10px;
   text-align: center;
   height: fit-content;
   margin-top: 0.5em;
   min-width: 200px;
+  height: 100%;
 }
 
 .sidebar__pfp {
@@ -15,7 +16,6 @@
 
 .sidebar__top {
   background: #fff;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,7 +47,6 @@
 
 .sidebar__stats {
   background: #fff;
-
   display: flex;
   flex-direction: column;
   padding: 0.5em 0em;
@@ -90,7 +89,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* justify-content: center; */
 }
 
 .sidebar__premium > p > img {

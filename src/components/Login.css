@@ -1,0 +1,99 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.login img {
+  width: 200px;
+}
+
+.login__motto {
+  font-size: 1.9rem;
+  padding: 0px 0px 35px 0px;
+}
+
+.login__formcontainer {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 40%;
+  max-width: 400px;
+}
+
+.login__formcontainer > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__formcontainer > form > label:first-child {
+  margin-top: 0px;
+}
+
+.login__formcontainer > form > label {
+  margin-top: 15px;
+  color: #636363;
+  font-size: 0.9rem;
+}
+
+.login__formcontainer > form > input {
+  height: 30px;
+  font-size: 1rem;
+  padding: 0em 0.5em;
+}
+
+.login__formcontainer > form > button {
+  margin-top: 20px;
+  border: none;
+  background: none;
+  background-color: #0a66c2;
+  color: white;
+  font-size: 1rem;
+  border-radius: 30px;
+  padding: 15px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.login__formcontainer > form > button:hover {
+  background-color: #09529c;
+  cursor: pointer;
+}
+
+.login__formcontainer > form > p {
+  font-size: 0.8rem;
+  padding: 0px 40px;
+  margin: 0 auto;
+  margin-top: 15px;
+  color: #636363;
+  justify-content: center;
+  text-align: center;
+}
+.login__formcontainer > form > p > span {
+  font-weight: 600;
+  color: #0a66c2;
+}
+
+.login__formcontainer > form > p > span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.login__formcontainer > p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login__formcontainer > p > span {
+  font-weight: 600;
+  color: #0a66c2;
+}
+
+.login__formcontainer > p > span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

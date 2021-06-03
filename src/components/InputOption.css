@@ -1,0 +1,20 @@
+.inputOption {
+  display: flex;
+  align-items: center;
+  /* width: 70px; */
+  height: 48px;
+  margin: 4px 0px;
+  padding: 0px 5px;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.inputOption > h5 {
+  color: #707070;
+  padding: 0px 6px;
+}
+
+.inputOption:hover {
+  background: #f0f0f0;
+  cursor: pointer;
+}
