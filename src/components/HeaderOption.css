@@ -37,6 +37,9 @@
   object-fit: contain;
   height: 25px !important;
   width: 25px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headerOption__title {
@@ -45,4 +48,27 @@
   font-weight: 400;
   font-size: 0.8rem;
   letter-spacing: 0px;
+}
+
+@media (max-width: 1000px) {
+  .headerOption {
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .headerOption:hover {
+    background-color: rgb(224, 224, 224);
+  }
+
+  .headerOption:hover::before {
+    width: 0;
+  }
+
+  .headerOption__icon {
+    margin-right: 5px;
+  }
 }

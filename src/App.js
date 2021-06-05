@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Feed from "./components/Feed";
 import Login from "./components/Login";
+import Widgets from "./components/Widgets";
+import Footer from "./components/Footer";
 import { auth } from "./components/Firebase";
 import { useDispatch } from "react-redux";
 import { login, logout } from "./features/userSlice";
@@ -35,16 +37,19 @@ function App() {
 
   return (
     <div>
-      <Header />
-
       {!user ? (
-        <Login />
+        <Login>
+          <Footer />
+        </Login>
       ) : (
-        <div className="app">
-          <div className="app__body">
-            <Sidebar />
-            <Feed />
-            {/* Widgets */}
+        <div>
+          <Header />
+          <div className="app">
+            <div className="app__body">
+              <Sidebar />
+              <Feed />
+              <Widgets />
+            </div>
           </div>
         </div>
       )}

@@ -1,0 +1,24 @@
+.footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 100%;
+  padding: 15px 0px;
+}
+
+.footer > img {
+  height: 30px;
+}
+
+.footer > a {
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 0.8rem;
+  color: rgb(53, 53, 53);
+}
+
+.footer > a:hover {
+  text-decoration: underline;
+}

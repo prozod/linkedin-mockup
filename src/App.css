@@ -2,6 +2,7 @@
   display: flex;
   width: 60%;
   max-width: 1180px;
+  justify-content: center;
 }
 
 .app {
@@ -10,4 +11,13 @@
   flex: 1;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 1000px) {
+  .app__body {
+    flex-direction: column;
+    width: 95%;
+    min-width: 330px;
+    max-width: 580px;
+  }
 }

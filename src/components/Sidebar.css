@@ -1,5 +1,5 @@
 .sidebar {
-  flex: 0.2;
+  flex: 0.25;
   position: sticky;
   top: 60px;
   border-radius: 10px;
@@ -275,4 +275,11 @@
 .sidebar__discover:hover {
   cursor: pointer;
   background: #e4e4e3;
+}
+
+@media (max-width: 1000px) {
+  .sidebar {
+    position: relative;
+    margin-bottom: 60px;
+  }
 }

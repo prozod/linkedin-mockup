@@ -4,8 +4,12 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import SidebarAccordion from "./SidebarAccordion";
 import AccordionItems from "./AccordionItems";
 import AddIcon from "@material-ui/icons/Add";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 function Sidebar() {
+  const user = useSelector(selectUser);
+
   const recentItem = (topic) => {
     return (
       <div className="sidebar__recentItem">
@@ -22,14 +26,11 @@ function Sidebar() {
           src="https://images.unsplash.com/photo-1619167778912-12c028966790?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1007&q=80"
           alt="User wallpaper"
         />
-        <Avatar
-          className="sidebar__pfp"
-          src="https://randomuser.me/api/portraits/men/47.jpg"
-        />
-        <h3 className="sidebar__username">Jake Mason</h3>
-        <p className="sidebar__aboutme">
-          Front End Developer | JavaScript | ReactJS | CSS
-        </p>
+        <Avatar className="sidebar__pfp" src={user.url}>
+          {user.email[0]}
+        </Avatar>
+        <h3 className="sidebar__username">{user.displayName}</h3>
+        <p className="sidebar__aboutme">{user.email}</p>
       </div>
 
       <div className="sidebar__stats">

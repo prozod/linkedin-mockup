@@ -11,10 +11,17 @@
 
 .inputOption > h5 {
   color: #707070;
+
   padding: 0px 6px;
 }
 
 .inputOption:hover {
   background: #f0f0f0;
   cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .inputOption {
+    height: 40px;
+  }
 }

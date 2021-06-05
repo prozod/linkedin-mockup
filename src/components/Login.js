@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { auth } from "./Firebase";
 import "./Login.css";
 import { login } from "../features/userSlice";
+import LinkedInTextLogo from "../icons/LinkedInLoginLogo.svg";
 
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [name, setName] = useState();
@@ -39,33 +40,30 @@ function Login() {
   };
   const loginToApp = (e) => {
     e.preventDefault();
-    auth.signInWithEmailAndPassword(email, password).then((userAuth) => {
-      dispatch(
-        login({
-          email: userAuth.user.email,
-          uid: userAuth.user.uid,
-          displayName: userAuth.user.displayName,
-          profilePicture: userAuth.user.photoURL,
-        })
-      );
-    });
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userAuth) => {
+        dispatch(
+          login({
+            email: userAuth.user.email,
+            uid: userAuth.user.uid,
+            displayName: userAuth.user.displayName,
+            profilePicture: userAuth.user.photoURL,
+          })
+        );
+      })
+      .catch((error) => alert(error));
   };
 
   return (
     <div className="login">
-      <img src="https://svgshare.com/i/XpL.svg" alt="LinkedIn" />
+      <img src={LinkedInTextLogo} alt="LinkedIn" />
       <p className="login__motto">
         Make the most out of your professional life.
       </p>
 
       <div className="login__formcontainer">
         <form>
-          <label htmlFor="name">Full Name (e.g.: John Smith)</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
           <label htmlFor="email address">Email address</label>
           <input
             type="text"
@@ -78,11 +76,20 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+
+          <label htmlFor="name">Full Name (e.g.: John Smith)</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Only required if registering a new account."
+          />
           <label htmlFor="profilepicture">Profile picture URL (optional)</label>
           <input
             type="text"
             value={profilePicture}
             onChange={(e) => setProfilePicture(e.target.value)}
+            placeholder="Only required if registering a new account."
           />
 
           <p>
@@ -103,6 +110,30 @@ function Login() {
           </span>
         </p>
       </div>
+      <div className="dummy__accounts">
+        <p>
+          If you don't want to create your own account, you can use the
+          <span> demo accounts</span> provided below.
+        </p>
+        <div className="dummy__separation"></div>
+        <div className="dummy__logins">
+          <p>
+            <span>elon@gmail.com — </span> 123456
+          </p>
+          <p>
+            <span>tiffany@gmail.com — </span> 123456
+          </p>
+          <p>
+            <span>martin@gmail.com — </span> 123456
+          </p>
+        </div>
+        <div className="dummy__separation"></div>
+
+        <p className="builtby">
+          Built by <a href="https://andreaswolff.net"> Andreas Wolff</a>
+        </p>
+      </div>
+      {props.children}
     </div>
   );
 }
