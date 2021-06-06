@@ -4,7 +4,7 @@ import "./InputOption.css";
 function InputOption({ Image, text, color }) {
   return (
     <div className="inputOption">
-      <Image style={{ color: color }} />
+      <Image style={{ color: color }} className="inputIcon" />
       <h5>{text}</h5>
     </div>
   );

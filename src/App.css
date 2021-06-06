@@ -14,10 +14,21 @@
 }
 
 @media (max-width: 1000px) {
+  .app {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    margin: 0;
+    padding: 0;
+  }
+
   .app__body {
     flex-direction: column;
     width: 95%;
-    min-width: 330px;
+    min-width: 313px;
     max-width: 580px;
+    margin-bottom: 50px;
   }
 }

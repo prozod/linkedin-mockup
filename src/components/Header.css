@@ -77,25 +77,70 @@
   display: flex;
 }
 
+.signout {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding: 5px 5px;
+  border-radius: 5px;
+  background-color: white;
+  color: #3a3a3a;
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  width: 100px;
+  top: 50px;
+}
+
+.signout > h5 {
+  width: 100%;
+  text-align: center;
+  padding: 10px 10px;
+  border-radius: 5px;
+}
+
+.signout > h5:hover {
+  background-color: #e6e6e6;
+}
+
+.signout__menu {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+}
+
 @media (max-width: 1000px) {
   .header__right {
-    display: none;
+    display: flex;
   }
   .header__search {
     display: none;
   }
 
+  .header__container {
+    position: fixed;
+    height: fit-content;
+    align-items: flex-end;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    top: unset;
+  }
+
   .header {
-    justify-content: space-between;
-    width: 95%;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 5px 0px;
   }
 
   .header__mobile {
-    position: sticky;
-    top: 0;
     display: flex;
+    justify-items: flex-end;
     align-items: center;
     height: 40px !important;
     color: #3a3a3a;
@@ -104,20 +149,24 @@
   }
 
   .header__mobile-menu {
-    position: fixed;
-    background-color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    width: fit-content;
-    height: fit-content;
-    border-radius: 10px;
-    box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.15);
-    right: 48px;
+  }
 
-    top: 50px;
+  .search__mobile {
+    margin: 0;
+    height: 40px;
+    font-size: 1rem;
+    padding: 0 10px;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid #858585;
+    position: fixed;
+    bottom: 50px;
+    width: 70%;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
+    outline: none;
+    box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.15);
   }
 
   .menu__item {
@@ -125,8 +174,19 @@
   }
 
   .mobileHamburger {
-    color: #444444;
-    width: 40px !important;
-    height: 35px !important;
+    color: #666666;
+    width: 30px !important;
+    height: 25px !important;
+    margin-left: 7px;
+  }
+
+  .mobileHamburger:hover {
+    color: #191919;
+  }
+
+  .signout {
+    top: unset;
+    bottom: 50px;
+    display: flex;
   }
 }

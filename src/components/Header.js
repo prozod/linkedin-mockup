@@ -11,11 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../components/Firebase";
 import { logout, selectUser } from "../features/userSlice";
 import LinkedInBug from "../icons/linkedin-icon.svg";
-import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
 import { useTransition, animated, config } from "react-spring";
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
+  const [userLogout, setUserLogout] = useState(false);
   const dispatch = useDispatch();
   const logoutUser = () => {
     dispatch(logout());
@@ -26,8 +26,6 @@ function Header() {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-
-    config: config.molasses,
   });
 
   function MobileMenu(props) {
@@ -53,37 +51,42 @@ function Header() {
           </div>
         </div>
 
-        <div className="header__mobile">
-          <MenuOutlinedIcon
+        <div className="header__mobile ">
+          <SearchIcon
             className="mobileHamburger"
             onClick={() => setOpenMenu(!openMenu)}
           />
 
           {openMenu && (
             <MobileMenu>
-              <div className="header__mobile-menu">
-                <HeaderOption title="Home" Icon={HomeIcon} />
-                <HeaderOption title="My Network" Icon={SupervisorAccountIcon} />
-                <HeaderOption title="Jobs" Icon={BusinessCenterIcon} />
-                <HeaderOption title="Messaging" Icon={TextsmsIcon} />
-                <HeaderOption title="Notifications" Icon={NotificationsIcon} />
-              </div>
+              <input
+                type="text"
+                placeholder="Search"
+                className="search__mobile"
+              />
             </MobileMenu>
           )}
         </div>
-
+        {/* logoutUser */}
         <div className="header__right">
           <HeaderOption title="Home" Icon={HomeIcon} />
           <HeaderOption title="My Network" Icon={SupervisorAccountIcon} />
           <HeaderOption title="Jobs" Icon={BusinessCenterIcon} />
           <HeaderOption title="Messaging" Icon={TextsmsIcon} />
           <HeaderOption title="Notifications" Icon={NotificationsIcon} />
-          <HeaderOption
-            profilepicture={true}
-            title="Me"
-            onClick={logoutUser}
-            className="userprofile"
-          />
+          <div className="signout__menu">
+            <HeaderOption
+              profilepicture={true}
+              title="Me"
+              onClick={() => setUserLogout(!userLogout)}
+              className="userprofile"
+            ></HeaderOption>
+            {userLogout && (
+              <div className="signout">
+                <h5 onClick={logoutUser}>Log Out</h5>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

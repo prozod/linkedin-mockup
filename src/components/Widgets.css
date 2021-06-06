@@ -195,3 +195,15 @@
   line-height: 2;
   font-size: 0.8rem;
 }
+
+@media (max-width: 1000px) {
+  .button__follow {
+    font-size: 0.8rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button__follow > .icon {
+    height: 20px !important;
+  }
+}

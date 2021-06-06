@@ -71,4 +71,23 @@
   .headerOption__icon {
     margin-right: 5px;
   }
+
+  .headerOption__title {
+    display: none;
+  }
+
+  .headerOption {
+    margin: 2px;
+    padding: 2px;
+  }
+}
+
+@media (min-width: 768px) {
+  .headerOption__title {
+    display: flex;
+    align-items: center;
+  }
+  .headerOption {
+    align-items: center;
+  }
 }
