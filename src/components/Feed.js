@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Feed.css";
 import { Avatar } from "@material-ui/core";
 import InputOption from "./InputOption";
@@ -11,11 +11,13 @@ import { db } from "./Firebase";
 import firebase from "firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
+import NewPostModal from "./NewPostModal";
 
 function Feed() {
   const user = useSelector(selectUser);
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
+  const [closeModal, setCloseModal] = useState(false);
 
   useEffect(() => {
     db.collection("posts")
@@ -30,38 +32,52 @@ function Feed() {
       );
   }, []);
 
-  const submitPost = (e) => {
-    e.preventDefault();
+  // const submitPost = (e) => {
+  //   e.preventDefault();
 
-    db.collection("posts").add({
-      name: user.displayName,
-      description: user.email,
-      message: input,
-      url: user.url,
-      time: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+  //   db.collection("posts").add({
+  //     name: user.displayName,
+  //     description: user.email,
+  //     message: input,
+  //     url: user.url,
+  //     time: firebase.firestore.FieldValue.serverTimestamp(),
+  //   });
 
-    setInput("");
-  };
+  //   setInput("");
+  // };
+
+  //postmodalRef is undefined until 'closeModal is true', hmmm
 
   return (
     <div className="feed">
       <div className="feed__inputArea">
         <div className="feed__input">
           <Avatar className="feed__pfp" src={user.url} />
-          <form>
+          {/* <form>
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               type="text"
               placeholder="Start a post"
+              onClick={() => {
+                setCloseModal(!closeModal);
+              }}
             />
+
             <button type="submit" onClick={submitPost}>
               Post
             </button>
-          </form>
+          </form> */}
+          <button
+            aria-label="newpost"
+            onClick={() => {
+              setCloseModal(!closeModal);
+            }}
+          >
+            Start a post
+          </button>
         </div>
-
+        <NewPostModal closeModal={closeModal} setCloseModal={setCloseModal} />
         <div className="feed__inputOptions">
           <InputOption
             text={"Photo"}

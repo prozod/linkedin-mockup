@@ -160,3 +160,32 @@
 .builtby > a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 1000px) {
+  .login {
+    background-color: white;
+  }
+
+  .login__motto {
+    font-size: 1.4rem;
+  }
+
+  .login__formcontainer {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 320px) {
+  .login__formcontainer {
+    min-width: 230px;
+  }
+
+  .login__motto {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .login__formcontainer > form > button {
+    padding: 10px;
+  }
+}

@@ -33,3 +33,12 @@
     height: 22px !important;
   }
 }
+
+@media (max-width: 300px) {
+  .inputOption > h5 {
+    display: none;
+  }
+  .inputIcon {
+    height: 25px !important;
+  }
+}

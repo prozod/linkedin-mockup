@@ -207,3 +207,13 @@
     height: 20px !important;
   }
 }
+
+@media (max-width: 300px) {
+  .widget {
+    width: 275px;
+  }
+
+  .widget__info > p {
+    width: 80%;
+  }
+}

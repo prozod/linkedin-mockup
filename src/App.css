@@ -32,3 +32,16 @@
     margin-bottom: 50px;
   }
 }
+
+@media (max-width: 300px) {
+  .app__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-left: 25px;
+    margin-bottom: 50px;
+  }
+}

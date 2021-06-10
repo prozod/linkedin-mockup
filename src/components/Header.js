@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Header.css";
 import HeaderOption from "./HeaderOption";
 import SearchIcon from "@material-ui/icons/Search";
@@ -12,6 +12,26 @@ import { auth } from "../components/Firebase";
 import { logout, selectUser } from "../features/userSlice";
 import LinkedInBug from "../icons/linkedin-icon.svg";
 import { useTransition, animated, config } from "react-spring";
+
+let useClickOutside = (handler) => {
+  let domRef = useRef();
+
+  useEffect(() => {
+    let clickHandler = (event) => {
+      if (!domRef.current.contains(event.target)) {
+        handler();
+      }
+    };
+
+    document.addEventListener("mousedown", clickHandler);
+
+    return () => {
+      document.removeEventListener("mousedown", clickHandler);
+    };
+  });
+
+  return domRef;
+};
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -39,6 +59,13 @@ function Header() {
     );
   }
 
+  let logoutRef = useClickOutside(() => {
+    setUserLogout(false);
+  });
+  let searchRef = useClickOutside(() => {
+    setOpenMenu(false);
+  });
+
   return (
     <div className="header__container">
       <div className="header">
@@ -51,7 +78,7 @@ function Header() {
           </div>
         </div>
 
-        <div className="header__mobile ">
+        <div ref={searchRef} className="header__mobile ">
           <SearchIcon
             className="mobileHamburger"
             onClick={() => setOpenMenu(!openMenu)}
@@ -74,7 +101,8 @@ function Header() {
           <HeaderOption title="Jobs" Icon={BusinessCenterIcon} />
           <HeaderOption title="Messaging" Icon={TextsmsIcon} />
           <HeaderOption title="Notifications" Icon={NotificationsIcon} />
-          <div className="signout__menu">
+
+          <div ref={logoutRef} className="signout__menu">
             <HeaderOption
               profilepicture={true}
               title="Me"

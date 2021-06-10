@@ -7,8 +7,9 @@ import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import RedoOutlinedIcon from "@material-ui/icons/RedoOutlined";
 import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
+import imageLaptop from "./laptop.jpg";
 
-function Posts({ name, description, message, url, date }) {
+function Posts({ name, description, message, url, time }) {
   return (
     <div className="post">
       <div className="post__header">
@@ -19,7 +20,7 @@ function Posts({ name, description, message, url, date }) {
           <h5>{name}</h5>
           <p>{description}</p>
           <p>
-            {date} ∙
+            {time} ∙
             <PublicIcon className="post__dateIcon" />
           </p>
         </div>
@@ -27,6 +28,7 @@ function Posts({ name, description, message, url, date }) {
 
       <div className="post__body">
         <p>{message}</p>
+        <img src={imageLaptop} alt="" />
       </div>
 
       <div className="post__buttons">

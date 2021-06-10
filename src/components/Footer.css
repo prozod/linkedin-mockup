@@ -22,3 +22,13 @@
 .footer > a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 1000px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer > a {
+    font-size: 0.7rem;
+  }
+}

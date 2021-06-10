@@ -91,3 +91,9 @@
     align-items: center;
   }
 }
+
+@media (max-width: 300px) {
+  .header__left {
+    display: none;
+  }
+}

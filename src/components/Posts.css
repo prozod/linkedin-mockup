@@ -43,7 +43,6 @@
 
 .post__body {
   overflow-wrap: anywhere;
-  padding-bottom: 10px;
 }
 
 .post__dateIcon {
@@ -54,6 +53,15 @@
 
 .post__body > p {
   font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.post__body > img {
+  object-fit: contain;
+  width: 100%;
+  display: block;
+  height: 100%;
+  padding: 0;
 }
 
 .post__buttons {

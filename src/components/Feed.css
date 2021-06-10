@@ -17,12 +17,7 @@
   align-items: center;
 }
 
-.feed__input > form {
-  display: flex;
-  width: 100%;
-}
-
-.feed__input > form > input {
+.feed__input button {
   background: none;
   flex: 1;
   height: 48px;
@@ -34,15 +29,13 @@
   color: #a3a3a3;
   font-size: 0.8rem;
   outline: none;
+  text-align: left;
+  transition: all 0.2s ease;
 }
 
-.feed__input input:hover {
+.feed__input button:hover {
   background: #f0f0f0;
   cursor: pointer;
-}
-
-.feed__input > form > button {
-  display: none;
 }
 
 .feed_createIcon {
@@ -68,5 +61,11 @@
   .feed__inputOptions {
     padding: 3px 0;
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 300px) {
+  .feed {
+    width: 275px;
   }
 }

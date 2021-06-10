@@ -283,3 +283,9 @@
     margin-bottom: 60px;
   }
 }
+
+@media (max-width: 300px) {
+  .sidebar {
+    width: 275px;
+  }
+}
