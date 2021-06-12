@@ -1,6 +1,6 @@
 .app__body {
   display: flex;
-  width: 60%;
+  width: 65%;
   max-width: 1180px;
   justify-content: center;
 }
@@ -11,6 +11,12 @@
   flex: 1;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 1600px) {
+  .app__body {
+    width: 80%;
+  }
 }
 
 @media (max-width: 1000px) {

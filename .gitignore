@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+firestore.rules
+storage.rules
+firestore.indexes.json
 
 # testing
 /coverage

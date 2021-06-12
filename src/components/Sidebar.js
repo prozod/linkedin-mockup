@@ -23,7 +23,7 @@ function Sidebar() {
     <div className="sidebar">
       <div className="sidebar__top">
         <img
-          src="https://images.unsplash.com/photo-1619167778912-12c028966790?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1007&q=80"
+          src="https://source.unsplash.com/1600x900/?nature,water"
           alt="User wallpaper"
         />
         <Avatar className="sidebar__pfp" src={user.url}>
@@ -36,11 +36,15 @@ function Sidebar() {
       <div className="sidebar__stats">
         <div className="sidebar__stat">
           <p>Who viewed your profile</p>
-          <p className="sidebar__statNumber">852</p>
+          <p className="sidebar__statNumber">
+            {Math.floor(Math.random() * (1100 - 100 + 1)) + 100}
+          </p>
         </div>
         <div className="sidebar__stat">
           <p>Connections</p>
-          <p className="sidebar__statNumber">1473</p>
+          <p className="sidebar__statNumber">
+            {Math.floor(Math.random() * (2000 - 500 + 1)) + 500}
+          </p>
         </div>
       </div>
 

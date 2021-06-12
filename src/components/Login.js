@@ -118,13 +118,13 @@ function Login(props) {
         <div className="dummy__separation"></div>
         <div className="dummy__logins">
           <p>
-            <span>elon@gmail.com — </span> 123456
+            <span>mark@gmail.com — </span> 123456
           </p>
           <p>
-            <span>tiffany@gmail.com — </span> 123456
+            <span>jessica@gmail.com — </span> 123456
           </p>
           <p>
-            <span>martin@gmail.com — </span> 123456
+            <span>craig@gmail.com — </span> 123456
           </p>
         </div>
         <div className="dummy__separation"></div>

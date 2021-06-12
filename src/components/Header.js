@@ -7,11 +7,11 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import TextsmsIcon from "@material-ui/icons/Textsms";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { auth } from "../components/Firebase";
-import { logout, selectUser } from "../features/userSlice";
+import { logout } from "../features/userSlice";
 import LinkedInBug from "../icons/linkedin-icon.svg";
-import { useTransition, animated, config } from "react-spring";
+import { useTransition, animated } from "react-spring";
 
 let useClickOutside = (handler) => {
   let domRef = useRef();

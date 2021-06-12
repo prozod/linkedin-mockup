@@ -11,15 +11,37 @@
 .post__header {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   height: 50px;
   cursor: pointer;
   padding: 0px 0px 12px 0px;
+}
+
+.post__author {
+  display: flex;
+}
+
+.postDate {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.post__delete {
+  color: #5f5f5f;
+  height: 24px !important;
 }
 
 .post__pfp {
   margin-right: 10px;
   width: 48px !important;
   height: 48px !important;
+}
+
+.videoresponsive {
+  display: flex;
+  width: 100%;
 }
 
 .post__info > h5 {
@@ -46,9 +68,12 @@
 }
 
 .post__dateIcon {
+  margin: 0;
+  padding: 0;
   width: 12px !important;
+  height: 12px !important;
   margin-left: 3px;
-  bottom: 10px;
+  margin-top: 4px;
 }
 
 .post__body > p {

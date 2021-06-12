@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./Feed.css";
 import { Avatar } from "@material-ui/core";
 import InputOption from "./InputOption";
@@ -8,14 +8,12 @@ import EventIcon from "@material-ui/icons/Event";
 import DescriptionIcon from "@material-ui/icons/Description";
 import Posts from "./Posts";
 import { db } from "./Firebase";
-import firebase from "firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 import NewPostModal from "./NewPostModal";
 
 function Feed() {
   const user = useSelector(selectUser);
-  const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
   const [closeModal, setCloseModal] = useState(false);
 
@@ -31,43 +29,11 @@ function Feed() {
         )
       );
   }, []);
-
-  // const submitPost = (e) => {
-  //   e.preventDefault();
-
-  //   db.collection("posts").add({
-  //     name: user.displayName,
-  //     description: user.email,
-  //     message: input,
-  //     url: user.url,
-  //     time: firebase.firestore.FieldValue.serverTimestamp(),
-  //   });
-
-  //   setInput("");
-  // };
-
-  //postmodalRef is undefined until 'closeModal is true', hmmm
-
   return (
     <div className="feed">
       <div className="feed__inputArea">
         <div className="feed__input">
           <Avatar className="feed__pfp" src={user.url} />
-          {/* <form>
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              type="text"
-              placeholder="Start a post"
-              onClick={() => {
-                setCloseModal(!closeModal);
-              }}
-            />
-
-            <button type="submit" onClick={submitPost}>
-              Post
-            </button>
-          </form> */}
           <button
             aria-label="newpost"
             onClick={() => {
@@ -93,18 +59,26 @@ function Feed() {
           />
         </div>
       </div>
-
-      {posts.map(({ id, data: { name, description, message, url } }) => {
-        return (
-          <Posts
-            key={id}
-            name={name}
-            description={description}
-            message={message}
-            url={url}
-          />
-        );
-      })}
+      {posts.map(
+        ({
+          id,
+          data: { name, description, message, url, image, video, time },
+        }) => {
+          return (
+            <Posts
+              key={id}
+              id={id}
+              name={name}
+              description={description}
+              message={message}
+              url={url}
+              image={image}
+              video={video}
+              time={time}
+            />
+          );
+        }
+      )}
     </div>
   );
 }

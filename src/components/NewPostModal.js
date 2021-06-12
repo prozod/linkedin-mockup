@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Avatar } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import { db } from "./Firebase";
+import { db, storage } from "./Firebase";
 import firebase from "firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
@@ -29,14 +29,15 @@ function NewPostModal({ closeModal, setCloseModal }) {
   const [sharePic, setSharePic] = useState("");
   const [videoLink, setVideoLink] = useState("");
   const [assetArea, setAssetArea] = useState("");
+  const [fileUrl, setFileUrl] = useState(null);
+  const [videoRef, setVideoRef] = useState(null);
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const image = e.target.files[0];
-    const storageRef = db.storage().ref();
+    const storageRef = storage.ref();
     const imageRef = storageRef.child(image.name);
-    imageRef.put(image).then(() => {
-      console.log("Uploaded image", image.name);
-    });
+    await imageRef.put(image);
+    setFileUrl(await imageRef.getDownloadURL());
 
     if (image === "" || image === undefined) {
       alert(`Not an image, the file is a ${typeof image}.`);
@@ -44,6 +45,15 @@ function NewPostModal({ closeModal, setCloseModal }) {
     }
 
     setSharePic(image);
+    return image;
+  };
+
+  const handleYoutubeLink = (e) => {
+    const videolink = e.target.value;
+    setVideoLink(videolink);
+    const shortenedLink = videolink.split("=")[1];
+    setVideoRef(shortenedLink);
+    return videolink;
   };
 
   useEffect(() => {
@@ -61,13 +71,11 @@ function NewPostModal({ closeModal, setCloseModal }) {
 
   const submitPost = (e) => {
     e.preventDefault();
-
-    if (input.trim().length <= 0) {
+    if (input.trim().length <= 0 && !sharePic && !videoLink) {
       alert("You cannot submit an empty message.");
       return;
     }
-
-    if (input.trim().length > 0) {
+    if (input.length >= 0 || sharePic !== "" || videoLink !== "") {
       db.collection("posts")
         .add({
           name: user.displayName,
@@ -75,6 +83,8 @@ function NewPostModal({ closeModal, setCloseModal }) {
           message: input,
           url: user.url,
           time: firebase.firestore.FieldValue.serverTimestamp(),
+          image: fileUrl,
+          video: videoRef,
         })
         .then((docRef) => {
           console.log("Document written with ID: ", docRef.id);
@@ -82,12 +92,20 @@ function NewPostModal({ closeModal, setCloseModal }) {
         .catch((error) => {
           console.error("Error adding document: ", error);
         });
+      setFileUrl(null);
       setInput("");
       setSharePic("");
+      setVideoRef("");
       setVideoLink("");
       setAssetArea("");
       setCloseModal(false);
     }
+  };
+
+  const switchAssetArea = (area) => {
+    setSharePic("");
+    setVideoLink("");
+    setAssetArea(area);
   };
 
   const modalClose = (e) => {
@@ -104,12 +122,6 @@ function NewPostModal({ closeModal, setCloseModal }) {
     },
     [setCloseModal, closeModal]
   );
-
-  const switchAssetArea = (area) => {
-    setSharePic("");
-    setVideoLink("");
-    setAssetArea(area);
-  };
 
   useEffect(() => {
     document.addEventListener("keydown", keypressClose);
@@ -181,7 +193,7 @@ function NewPostModal({ closeModal, setCloseModal }) {
                           type="text"
                           placeholder="Share a video URL"
                           value={videoLink}
-                          onChange={(e) => setVideoLink(e.target.value)}
+                          onChange={handleYoutubeLink}
                           className="sharedvideo__input"
                         />
                         {videoLink && (
