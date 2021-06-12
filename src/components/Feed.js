@@ -11,6 +11,7 @@ import { db } from "./Firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 import NewPostModal from "./NewPostModal";
+import FlipMove from "react-flip-move";
 
 function Feed() {
   const user = useSelector(selectUser);
@@ -59,26 +60,28 @@ function Feed() {
           />
         </div>
       </div>
-      {posts.map(
-        ({
-          id,
-          data: { name, description, message, url, image, video, time },
-        }) => {
-          return (
-            <Posts
-              key={id}
-              id={id}
-              name={name}
-              description={description}
-              message={message}
-              url={url}
-              image={image}
-              video={video}
-              time={time}
-            />
-          );
-        }
-      )}
+      <FlipMove>
+        {posts.map(
+          ({
+            id,
+            data: { name, description, message, url, image, video, time },
+          }) => {
+            return (
+              <Posts
+                key={id}
+                id={id}
+                name={name}
+                description={description}
+                message={message}
+                url={url}
+                image={image}
+                video={video}
+                time={time}
+              />
+            );
+          }
+        )}
+      </FlipMove>
     </div>
   );
 }
